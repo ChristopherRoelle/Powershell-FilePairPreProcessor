@@ -89,7 +89,7 @@ if(test-path -Path $pickupPath)
                         Copy-Item -Path $file1 -Destination $backupFolder
                         Copy-Item -Path $file2 -Destination $backupFolder
                     }
-                    else #JobProc Folder doesnt exist, fail.
+                    else #backup Folder doesnt exist, fail.
                     {
                         Write-Output($backupFolder + ' does NOT exist!')
                         exit 1
@@ -107,7 +107,7 @@ if(test-path -Path $pickupPath)
 
 
             }
-            else #Match doesnt exist... No error, notifier will send something to client.
+            else #Match doesnt exist... No error. File will sit stagnant, implement a notifier system to check for these.
             {
                 write-output($_.baseName + $fileExt2 + ' NOT found.')
             }
@@ -118,7 +118,7 @@ if(test-path -Path $pickupPath)
         Write-Output('No files found, exiting.')
     }
 }
-else #Client Drop Path doesnt exist. Exit with error.
+else #Drop Path doesnt exist. Exit with error.
 {
     Write-Output($pickupPath + ' is NOT a valid path.')
     exit 1
